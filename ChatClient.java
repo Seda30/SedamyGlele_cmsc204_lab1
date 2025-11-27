@@ -1,6 +1,3 @@
-
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -82,13 +79,18 @@ public class ChatClient implements Runnable, ChatClientInterface {
     /**
      * Connects to the server then enters the processing loop.
      */
+    @Override
     public void run() {
 		try {
 			//TODO STUDENT: create a client socket with server address and server port
-
+			Socket socket = new Socket(getServerAddress(), CHAT_ROOM_PORT);
+			
 			//Make connection and initialize streams;
 			//TODO STUDENT: setup input and output streams
 			
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+            
 	        // Process all messages from server, according to the protocol.
 	        while (true) {
 	            String line = in.readLine();

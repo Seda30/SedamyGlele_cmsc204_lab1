@@ -1,8 +1,4 @@
 
-
-
-
-
 import java.io.PrintWriter;
 import java.util.HashSet;
 
@@ -35,6 +31,7 @@ public class ChatServerExec {
    public void startServer() {
     	ChatServer server = new ChatServer(CHAT_ROOM_PORT);
     	//TODO STUDENT: start a thread with server in it
-    	
+    	Thread t = new Thread(server);
+        t.start();
     }
 }

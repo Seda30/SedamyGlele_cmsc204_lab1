@@ -1,6 +1,4 @@
 
-
-
 /**
  * The client follows the Chat Protocol which is as follows.
  * When the server sends "SUBMITNAME" the client replies with the
@@ -38,7 +36,9 @@ public class ChatClientExec implements ChatClientExecInterface {
     	setClientY(getClientY() + 50.0);
     	setClientX(getClientX() + 50.0);
     	ChatClient client = new ChatClient(CHAT_ROOM_PORT);
-    	//TODO STUDENT: create a thread with client in it
+    	
+    	Thread t = new Thread(client);
+        t.start();
     }
 
 	public static double getClientX() {
